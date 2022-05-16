@@ -9,24 +9,24 @@
 require 'faker'
 require 'devise'
 
-10.times do
-    first_name = Faker::Name.first_name  
-    last_name = Faker::Name.last_name
-    email = first_name + last_name + "@yopmail.com"
-    User.create!(first_name: first_name, last_name: last_name, email: email, encrypted_password: "valena")
-end
+# 10.times do
+#     first_name = Faker::Name.first_name  
+#     last_name = Faker::Name.last_name
+#     email = first_name + last_name + "@yopmail.com"
+#     User.create!(first_name: first_name, last_name: last_name, email: email, encrypted_password: "valena")
+# end
 
-5.times do
-    Event.create!(
-        start_date: Faker::Date.between(from: Date.today, to: 1.year.from_now),
-        duration: rand(5..60)*5,
-        title: Faker::Science.science,
-        description: Faker::TvShows::Buffy.quote,
-        price: rand(1..500),
-        location: Faker::Address.street_address,
-        admin: User.all.sample
-    )
-end
+# 5.times do
+#     Event.create!(
+#         start_date: Faker::Date.between(from: Date.today, to: 1.year.from_now),
+#         duration: rand(5..60)*5,
+#         title: Faker::Science.science,
+#         description: Faker::TvShows::Buffy.quote,
+#         price: rand(1..500),
+#         location: Faker::Address.street_address,
+#         admin: User.all.sample
+#     )
+# end
 
 Event.all.each do
     
