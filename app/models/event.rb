@@ -9,7 +9,7 @@ class Event < ApplicationRecord
     validates :duration, presence: true , if: :is_5_minutes_multiple?#positif et multiple de 5
     validates :description, presence: true, length: { in: 20..1000 }#20 - 1000
     validates :title, presence: true, length: { in: 5..140 } # 5 min max 140
-    validates :price, presence: true, numeracality: { in: 1..1000}
+    validates :price, presence: true, numericality: { in: 1..1000}
     validates :location, presence: true
 
     def is_5_minutes_multiple?
