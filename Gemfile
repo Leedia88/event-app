@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'sendgrid'
 gem 'faker'
 gem 'devise'
+gem 'letter_opener'
+gem 'dotenv-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
