@@ -12,12 +12,10 @@ class UserMailer < ApplicationMailer
     end
 
     def welcome_event(attendance)
-      puts "ça marche!!!!!"
+      @event= attendance.event
       @admin = attendance.event.admin
-      @user = User.find(attendance.stripe_customer_id)
+      @user = User.find(attendance.attendee.id)
       mail(to: @admin.email, subject: 'Bienvenue à notre événement !')
     end
-
-
 
 end

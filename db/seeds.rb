@@ -10,10 +10,12 @@ require 'faker'
 require 'devise'
 
 # 10.times do
-#     first_name = Faker::Name.first_name  
-#     last_name = Faker::Name.last_name
-#     email = first_name + last_name + "@yopmail.com"
-#     User.create!(first_name: first_name, last_name: last_name, email: email, encrypted_password: "valena")
+#     User.create!(
+#         first_name: Faker::Name.first_name,
+#         last_name:  Faker::Name.last_name,
+#         email: Faker::Name.first_name.concat("@yopmail.com"),
+#         encrypted_password: "valena",
+#         description: Faker::Quotes::Shakespeare.hamlet_quote)
 # end
 
 # 5.times do
@@ -29,11 +31,10 @@ require 'devise'
 # end
 
 Event.all.each do
-    
-
 5.times do
     Attendance.create!(
-        stripe_customer_id: User.all.sample.id
+        event_id: Event.all.sample.id,
+        attendee_id: User.all.sample.id
     )
 end
 

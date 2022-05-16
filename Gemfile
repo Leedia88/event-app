@@ -33,6 +33,7 @@ gem 'faker'
 gem 'devise'
 gem 'letter_opener'
 gem 'dotenv-rails'
+gem 'table_print'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

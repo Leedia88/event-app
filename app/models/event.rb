@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
     has_many :attendances
-    has_many :users, through: :attendances
+    has_many :attendees, through: :attendances, class_name: "User"
     belongs_to :admin, class_name: "User"
 
     before_update :is_future?
