@@ -1,8 +1,15 @@
 
-<h1 class="pb-2 border-bottom">Liste des événements à venir</h1>
-<p>Retrouve tous les grands sujets scientifiques animés par des passionnées</p>
+<section class="py-5 container-fluid text-center text-white" style="background-image: url('https://ubi-global.com/wp-content/uploads/Photo-Tech-3.jpeg') ; background-position: center center; background-size: cover; min-height:400px";>
+            <h2 style="text-shadow: black 0.1em 0.1em 0.2em">Retrouve tous les grands sujets scientifiques animés par des passionné.e.s</h2> 
+              <h3 style="text-shadow: black 0.1em 0.1em 0.2em">Toi aussi, partage tes connaissances</h3> 
+              <div class="d-flex flex-row justify-content-center">  
+                  <%=link_to "S'inscrire",new_user_registration_path, :class => "m-3 col-md-auto btn btn-light btn-lg" %>
+                  <button class="m-3 col-md-auto btn btn-outline-light btn-lg">Je découvre le programme!</button>
+              </div>
+          </section>
 
-<h3>Tous les événements! </h3>
+<div class="pt-4 text-center">
+<h3 class="mt-2" >Tous les événements! </h3>
     <div class="d-flex flex-wrap justify-content-center ">
         <% @events.each_with_index.map do |event, index| %>
         <%if event.is_future?%>
@@ -12,63 +19,28 @@
                     <p>Organisateur: <%=event.admin.full_name%></p>
                 </div>
                 <div class="card-body align-content-between">
-                    <div style="height:70px;text-overflow:fade(5px);"><p><%=event.description%></p>
-                    <span id="points">...</span></div>
+                    <div style="height:90px; ">
+                    <p style="-webkit-mask-image: linear-gradient(0deg, transparent 16px, red 66px);"><%=event.description%></p></div>
+                    <div class="text-center"><%=link_to "Lire la description", event_path(event.id), :class => "card-link", :style => "z-index:5;"%>
+                    </div>
                 </div>
                 <div>
                         <ul class="list-group list-group-light">
-                            <li class="list-group-item px-3">Date: <%=event.start_date%></li>
-                            <li class="list-group-item px-3">Durée: <%=event.duration%> minutes</li>
-                            <li class="list-group-item px-3">Prix: <%=event.price%> €</li>
-                            <li class="list-group-item px-3">Lieu: <%=event.location%></li>
+                            <li class="list-group-item px-3"><strong>Date:</strong> <%=event.start_date%></li>
+                            <li class="list-group-item px-3"><strong>Durée:</strong> <%=event.duration%> minutes</li>
+                            <li class="list-group-item px-3"><strong>Prix:</strong> <%=event.price%> €</li>
+                            <li class="list-group-item px-3"><strong>Lieu:</strong> <%=event.location%></li>
                         </ul></div>
                 <div class="card-footer">
-                <%=link_to "S'inscrire", event_path(event), :class => " btn btn-info" %>
+                <%if user_signed_in? && is_attending?(event)%>
+                    <%=button_to "Se désinscrire", event_attendance_path(event.id, event.get_attendance(current_user).id), method: :delete, :class => " btn btn-outline-danger" %>
+                <%else%>
+                    <%=button_to "S'inscrire", event_attendance_index_path(event.id), :class => " btn btn-info" %>
+                <%end%>
                 </div>
             </div>
-        <%end%>
+        <% end %>
         <% end %>
     </div>
 
-
-  <div class="container px-4 py-5" id="hanging-icons">
-    <h2 class="pb-2 border-bottom">Hanging icons</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-      <div class="col d-flex align-items-start">
-        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
-        </div>
-        <div>
-          <h2>Featured title</h2>
-          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="btn btn-primary">
-            Primary button
-          </a>
-        </div>
-      </div>
-      <div class="col d-flex align-items-start">
-        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"/></svg>
-        </div>
-        <div>
-          <h2>Featured title</h2>
-          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="btn btn-primary">
-            Primary button
-          </a>
-        </div>
-      </div>
-      <div class="col d-flex align-items-start">
-        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#tools"/></svg>
-        </div>
-        <div>
-          <h2>Featured title</h2>
-          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="btn btn-primary">
-            Primary button
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
  
-  get 'users/show'
-  resources :events
+  get 'myprofile', to: "users#show"
+  resources :events do
+    resources :attendance, only: [:create, :destroy]
+  end
   get 'static_pages/index'
   get 'static_pages/secret'
   devise_for :users

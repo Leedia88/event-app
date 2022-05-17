@@ -20,4 +20,22 @@ class Event < ApplicationRecord
         self.start_date.to_i > Time.now.to_i
     end
 
+    def get_attendance(user)
+        Attendance.find_by(attendee_id: user.id, event_id: self.id)
+    end
+
+    def self.search(search)
+        if search #le champ est rempli
+            result = Event.where(['lower(description) LIKE ? or lower(title) LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%"])
+            result_bis.map!{ |id| Event.find(id)}
+            if result
+                @gevent = result
+            else
+                @event = Event.all
+            end
+        else #le champ est vide
+            @events = Event.all
+        end
+    end
+
 end

@@ -15,10 +15,10 @@ require 'devise'
         last_name:  Faker::Name.last_name,
         email: Faker::Name.first_name.concat(Faker::Number.decimal_part(digits: 2).concat("@yopmail.com")),
         password: "valena",
-        description: Faker::Quotes::Shakespeare.hamlet_quote)
+        description: Faker::TvShows::RickAndMorty.quote)
 end
 
-5.times do
+30.times do
     Event.create!(
         start_date: Faker::Date.between(from: Date.today, to: 1.year.from_now),
         duration: rand(5..60)*5,
