@@ -13,7 +13,7 @@ require 'devise'
     User.create!(
         first_name: Faker::Name.first_name,
         last_name:  Faker::Name.last_name,
-        email: Faker::Name.first_name.concat(Faker::Number.number(digits: 10).concat("@yopmail.com")),
+        email: Faker::Name.first_name.concat(Faker::Number.decimal_part(digits: 2).concat("@yopmail.com")),
         password: "valena",
         description: Faker::Quotes::Shakespeare.hamlet_quote)
 end
