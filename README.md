@@ -6,17 +6,9 @@ application up and running....
 ![Ruby](https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white)  
 ![Rails](https://img.shields.io/badge/rails-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white) 
 
-* Configuration : Ruby version 2.7.4, Rails v.5.2.7.1
-- Clone this repository with git
-- Install the gems  
-  `bundle install`
-- Implement the database:  
- `rails db:create`  
- `rails db:migrate`   
- `rails db:seed`  
-   
-- Acess with http ://localhost:3000/  
- `rails s`
+* Configuration : Ruby version 2.7.4, Rails v.5.2.7.1  
+* Acess with Heroku  
+ `https://protected-river-78222.herokuapp.com/`
 
 
 # Pinciples
