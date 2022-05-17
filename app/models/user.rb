@@ -13,7 +13,11 @@ class User < ApplicationRecord
   end
 
   def full_name
-    (self.first_name + " " + self.last_name)
+     if self.first_name
+      self.first_name + " " + self.last_name
+     else
+      self.email
+     end
   end
 
     # validates :email # { case_sensitive: false }, format: { with: /\A[a-zA-Z]+\z/,

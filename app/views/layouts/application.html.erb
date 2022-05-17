@@ -43,8 +43,8 @@
           <button class="btn btn-info dropdown-toggle mx-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               Log Out </button>
           <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
-            <li><div class="text-center">&nbsp;&nbsp;<%="Logged as #{current_user.email}"%></div></li>
-            <li><%=link_to "Se déconnecter", destroy_user_session_path(session.id), :method => "delete", :class => "dropdown-item btn btn-light"  %></li>
+            <li><div class="text-center">&nbsp;&nbsp;<%="Logged as #{current_user.full_name}"%></div></li>
+            <li><%=link_to "Se déconnecter", destroy_user_session_url(session.id), :method => :delete, :class => "btn dropdown-item" %></li>
           </ul>
         </div>
         <%else%>
