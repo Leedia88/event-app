@@ -1,4 +1,6 @@
+<div class="container">
  <div class="card m-4" style="width:300px;">
+
                 <div class="card-body">
                     <p>Titre: <%=@event.title%></p>
                     <p>Description: <%=@event.description%></p>
@@ -21,4 +23,5 @@
                 <div class="card-footer">
                 <%=link_to "S'inscrire", event_path(@event), :class => "dropdown-item btn btn-light" %>
                 </div>
+    </div>
 </div>
