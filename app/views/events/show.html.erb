@@ -1,0 +1,24 @@
+ <div class="card m-4" style="width:300px;">
+                <div class="card-body">
+                    <p>Titre: <%=@event.title%></p>
+                    <p>Description: <%=@event.description%></p>
+                    <p>Date: <%=@event.start_date%></p>
+                    <p>Durée: <%=@event.duration%> minutes</p>
+                    <p>Prix: <%=@event.price%> €</p>
+                    <p>Lieu: <%=@event.location%></p>
+                    <p>Organisateur: <%=@event.admin.email%></p>
+                    <p>Participants:</p>
+                    <ul>
+                    <%if @ids%>
+                    <%@ids.each do |id|%>
+                        <li><%=User.find(id).full_name%></li>
+                    <%end%>
+                    <%else%>
+                    Pas de Participant
+                    <%end%>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                <%=link_to "S'inscrire", event_path(@event), :class => "dropdown-item btn btn-light" %>
+                </div>
+</div>
