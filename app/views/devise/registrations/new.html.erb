@@ -10,7 +10,7 @@
 
 
 
-<h2 class="h3 mb-3 font-weight-normal">Sign up</h2>
+<h2 class="h3 mb-3 font-weight-normal">Inscription</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -47,7 +47,7 @@
     <%= f.text_area :description, autofocus: true, autocomplete: "Description" %>
   </div>
 
-  <div class="actions mt-5">
+  <div class="actions mt-3">
     <%= f.submit "S'inscrire" %>
   </div>
 <% end %>

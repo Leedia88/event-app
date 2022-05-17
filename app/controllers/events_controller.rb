@@ -20,8 +20,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @attendees = Attendance.find_by(event_id: @event.id)
     if @attendees
-      @ids = @attendees.pluck(:attendee_id)
- 
+      @ids = Attendance.find_by(event_id: @event.id).pluck(:attendee_id)
     end
   end
 
