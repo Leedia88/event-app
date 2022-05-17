@@ -15,7 +15,7 @@
         <%if event.is_future?%>
             <div class="card m-4 card-container" style="width:320px;">
                 <div class="card-index card-header">
-                    <h4><%=event.title%></h4>
+                    <h4><%=link_to event.title, event_path(event.id), :style => "text-decoration:none;color:#430273;"%></h4>
                     <p>Organisateur: <%=event.admin.full_name%></p>
                 </div>
                 <div class="card-body align-content-between">
@@ -26,7 +26,7 @@
                 </div>
                 <div>
                         <ul class="list-group list-group-light">
-                            <li class="list-group-item px-3"><strong>Date:</strong> <%=event.start_date%></li>
+                            <li class="list-group-item px-3"><strong>Date:</strong> <%=event.start_date.to_time.strftime('%e %B %Y')%></li>
                             <li class="list-group-item px-3"><strong>Durée:</strong> <%=event.duration%> minutes</li>
                             <li class="list-group-item px-3"><strong>Prix:</strong> <%=event.price%> €</li>
                             <li class="list-group-item px-3"><strong>Lieu:</strong> <%=event.location%></li>
