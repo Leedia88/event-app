@@ -1,14 +1,15 @@
 <div class="container">
- <div class="card m-4" style="width:300px;">
-
+ <div class="card m-4" style="width:600px;">
+       <div class="card-header"><h4><%=@event.title%></h4></div>
                 <div class="card-body">
-                    <p>Titre: <%=@event.title%></p>
-                    <p>Description: <%=@event.description%></p>
-                    <p>Date: <%=@event.start_date%></p>
-                    <p>Durée: <%=@event.duration%> minutes</p>
-                    <p>Prix: <%=@event.price%> €</p>
-                    <p>Lieu: <%=@event.location%></p>
-                    <p>Organisateur: <%=@event.admin.email%></p>
+                    <p><strong>Description: </strong><%=@event.description%></p>
+                    <p><strong>Date: </strong><%=@event.start_date%></p>
+                    <p><strong>Durée: </strong><%=@event.duration%> minutes</p>
+                    <p><strong>Prix: </strong><%=@event.price%> €</p>
+                    <p><strong>Lieu: </strong><%=@event.location%></p>
+                    <hr>
+                    <p>Organisateur: </strong><%=@event.admin.email%></p>
+                    <hr>
                     <p>Participants:</p>
                     <ul>
                     <%if @ids%>
@@ -21,7 +22,7 @@
                     </ul>
                 </div>
                 <div class="card-footer">
-                <%=link_to "S'inscrire", event_path(@event), :class => "dropdown-item btn btn-light" %>
+                <%=button_to "S'inscrire", event_attendance_index_path(@event.id), :class => " btn btn-info" %>
                 </div>
     </div>
 </div>

@@ -20,14 +20,13 @@ class EventsController < ApplicationController
   end
 
   def show
-    @attendees = Attendance.find_by(event_id: @event.id)
-    if @attendees
-      @ids = Attendance.find_by(event_id: @event.id).pluck(:attendee_id)
+    if Attendance.where(event_id: @event.id).exists?
+      @attendees = Attendance.where(event_id: @event.id).pluck(:attendee)
     end
   end
 
   def search
-    
+
   end
 
   def edit 
