@@ -37,7 +37,8 @@ gem 'letter_opener'
 gem 'dotenv-rails'
 gem 'table_print'
 gem 'rails-ujs'
-gem 'bootstrap-datepicker-rails'
+
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
