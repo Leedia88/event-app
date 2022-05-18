@@ -9,7 +9,8 @@
             <h3>Les événements que j'organise</h3><hr>
             <ul class="mt-4">
             <%@events_admin.each do |event|%>
-            <li><%=event.title%> le <%=event.start_date.to_time.strftime('%e %B')%></li><br>
+            <li><%=event.title%></li>
+            le <%=event.start_date.to_time.strftime('%e %B')%><br><br>
             <%=link_to "lien vers l'événement", event_path(event.id), :class => "btn btn-info"%>
             <%=link_to "Modifier l'événement", edit_event_path(event.id), :class => "btn btn-outline-info"%><br><hr>
             <%end%>
@@ -20,7 +21,7 @@
             <h3>Mon agenda</h3><hr>
             <ul class="mt-4">
             <%@events_attended.each do |event|%>
-            <li><%=event.title%> le <%=event.start_date.to_time.strftime('%e %B')%></li><br>
+            <li><%=event.title%> </li> le <%=event.start_date.to_time.strftime('%e %B')%><br><br>
             <%=link_to "lien vers l'événement", event_path(event.id), :class => "btn btn-info"%>
             <%=link_to "Se désinscrire", event_path(event.id), :class => "btn btn-outline-danger"%><br><hr>
             <%end%>
