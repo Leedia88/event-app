@@ -2,11 +2,14 @@
  <div class="card m-4" style="width:600px;">
        <div class="card-header"><h4><%=@event.title%></h4></div>
                 <div class="card-body">
-                    <p><strong>Description: </strong><%=@event.description%></p>
-                    <p><strong>Date: </strong><%=@event.start_date%></p>
-                    <p><strong>Durée: </strong><%=@event.duration%> minutes</p>
-                    <p><strong>Prix: </strong><%=@event.price%> €</p>
-                    <p><strong>Lieu: </strong><%=@event.location%></p>
+                    <h5><strong>Sujet: </strong><%=@event.description%></h5><br>
+                    <div>
+                        <ul class="list-group list-group-light">
+                            <li class="list-group-item px-3"><strong>Date:</strong> <%=@event.start_date.to_time.strftime('%e %B %Y')%></li>
+                            <li class="list-group-item px-3"><strong>Durée:</strong> <%=@event.duration%> minutes</li>
+                            <li class="list-group-item px-3"><strong>Prix:</strong> <%=@event.price%> €</li>
+                            <li class="list-group-item px-3"><strong>Lieu:</strong> <%=@event.location%></li>
+                        </ul></div>
                     <hr>
                     <p>Organisateur: </strong><%=@event.admin.email%></p>
                     <hr>
