@@ -41,6 +41,7 @@ gem 'letter_opener'
 gem 'dotenv-rails'
 gem 'table_print'
 gem 'rails-ujs'
+gem 'stripe'
 
 
 

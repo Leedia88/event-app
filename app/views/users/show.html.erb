@@ -1,6 +1,7 @@
+<div class="container p-3">
 <h1>Tous mes événements</h1>
 
-<div class="container">
+<div class="container pt-5">
 
     <div class="row">
 
@@ -9,7 +10,8 @@
             <ul class="mt-4">
             <%@events_admin.each do |event|%>
             <li><%=event.title%> le <%=event.start_date.to_time.strftime('%e %B')%></li><br>
-            <%=link_to "Modifier l'événement", edit_event_path(event.id), :class => "btn btn-info"%><br><hr>
+            <%=link_to "lien vers l'événement", event_path(event.id), :class => "btn btn-info"%>
+            <%=link_to "Modifier l'événement", edit_event_path(event.id), :class => "btn btn-outline-info"%><br><hr>
             <%end%>
             </ul>
 
@@ -20,10 +22,11 @@
             <%@events_attended.each do |event|%>
             <li><%=event.title%> le <%=event.start_date.to_time.strftime('%e %B')%></li><br>
             <%=link_to "lien vers l'événement", event_path(event.id), :class => "btn btn-info"%>
-            <%=link_to "Se désinscrire", event_path(event.id), :class => "btn btn-info"%><br><hr>
+            <%=link_to "Se désinscrire", event_path(event.id), :class => "btn btn-outline-danger"%><br><hr>
             <%end%>
             </ul>
         </div>
 
     </div>
+</div>
 </div>

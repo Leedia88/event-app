@@ -13,19 +13,23 @@
                     <hr>
                     <p>Organisateur: </strong><%=@event.admin.email%></p>
                     <hr>
-                    <p>Participants:</p>
+                    <p>Réponses:</p>
                     <ul>
                     <%if @attendees%>
-                        <%@attendees.each do |id|%>
-                        <li><%=User.find(id).full_name%></li>
-                    <%end%>
+                        <%if is_admin?(@event)%>
+                            <%@attendees.each do |id|%>
+                            <li><%=User.find(id).full_name%></li>
+                            <%end%>
+                        <%else%>
+                            <%=@attendees.count%> Participant.e.s
+                        <%end%>
                     <%else%>
                     Pas de Participant
                     <%end%>
                     </ul>
                 </div>
                 <div class="card-footer">
-                <%=button_to "S'inscrire", event_attendance_index_path(@event.id), :class => " btn btn-info" %>
+                <%=link_to "S'inscrire", new_event_charge_path(@event.id), :class => " btn btn-info" %>
                 </div>
     </div>
 </div>

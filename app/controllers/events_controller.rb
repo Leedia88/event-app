@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user, only: [:new, :create]
-  before_action :set_event, only: [:show, :edit, :update]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
   
   def index
     @events = Event.all.order(:start_date)
@@ -26,13 +26,23 @@ class EventsController < ApplicationController
   end
 
   def search
-
   end
 
-  def edit 
+  def edit  
   end
 
   def update
+      if @event.update(event_params)
+        flash[:success] = "Evénement mis à jour"
+        redirect_to event_path(@event)
+      else
+        render :edit
+      end
+  end
+
+  def destroy
+    @event.destroy
+    redirect_to events_path
   end
 
   private
@@ -40,12 +50,6 @@ class EventsController < ApplicationController
     params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :admin_id)
   end
 
-  def authenticate_user
-    unless user_signed_in?
-      flash[:warning] = "Tu dois être connecté pour créer un événement!"
-      redirect_to root_path
-    end
-  end
 
   def set_event
     @event = Event.find(params[:id])

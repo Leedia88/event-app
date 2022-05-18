@@ -1,14 +1,14 @@
 
 <section class="py-5 container-fluid text-center text-white" style="background-image: url('https://ubi-global.com/wp-content/uploads/Photo-Tech-3.jpeg') ; background-position: center center; background-size: cover; min-height:400px";>
-            <h2 style="text-shadow: black 0.1em 0.1em 0.2em">Retrouve tous les grands sujets scientifiques animés par des passionné.e.s</h2> 
-              <h3 style="text-shadow: black 0.1em 0.1em 0.2em">Toi aussi, partage tes connaissances</h3> 
-              <div class="d-flex flex-row justify-content-center">  
-                  <%=link_to "S'inscrire",new_user_registration_path, :class => "m-3 col-md-auto btn btn-light btn-lg" %>
-                  <button class="m-3 col-md-auto btn btn-outline-light btn-lg">Je découvre le programme!</button>
-              </div>
-          </section>
+    <h2 style="text-shadow: black 0.1em 0.1em 0.2em">Retrouve tous les grands sujets scientifiques animés par des passionné.e.s</h2> 
+    <h3 style="text-shadow: black 0.1em 0.1em 0.2em">Toi aussi, partage tes connaissances</h3> 
+    <div class="d-flex flex-row justify-content-center">  
+        <%=link_to "S'inscrire",new_user_registration_path, :class => "m-3 col-md-auto btn btn-light btn-lg" %>
+        <a href="#all-events" class="m-3 col-md-auto btn btn-outline-light btn-lg">Je découvre le programme!</a>
+    </div>
+</section>
 
-<div class="pt-4 text-center">
+<div id="all-events" class="pt-4 text-center">
 <h3 class="mt-2" >Tous les événements! </h3>
     <div class="d-flex flex-wrap justify-content-center ">
         <% @events.each_with_index.map do |event, index| %>
@@ -29,11 +29,11 @@
                             <li class="list-group-item px-3"><strong>Date:</strong> <%=event.start_date.to_time.strftime('%e %B %Y')%></li>
                         </ul></div>
                 <div class="card-footer">
-                <%if user_signed_in? && is_attending?(event)%>
-                    <%=button_to "Se désinscrire", event_attendance_path(event.id, event.get_attendance(current_user).id), method: :delete, :class => " btn btn-outline-danger" %>
-                <%else%>
-                    <%=button_to "S'inscrire", event_attendance_index_path(event.id), :class => " btn btn-info" %>
-                <%end%>
+                    <%if user_signed_in? && is_attending?(event)%>
+                        <%=button_to "Se désinscrire", event_attendance_path(event.id, event.get_attendance(current_user).id), method: :delete, :class => " btn btn-outline-danger" %>
+                    <%else%>
+                        <%=button_to "S'inscrire", event_attendance_index_path(event.id), :class => " btn btn-info" %>
+                    <%end%>
                 </div>
             </div>
         <% end %>
