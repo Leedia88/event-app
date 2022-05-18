@@ -21,7 +21,7 @@ class EventsController < ApplicationController
 
   def show
     if Attendance.where(event_id: @event.id).exists?
-      @attendees = Attendance.where(event_id: @event.id).pluck(:attendee)
+      @attendees = Attendance.where(event_id: @event.id).pluck(:attendee_id)
     end
   end
 

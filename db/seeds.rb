@@ -31,7 +31,7 @@ require 'devise'
 # end
 
 Event.all.each do
-15.times do
+2.times do
     Attendance.create(
         event_id: Event.all.sample.id,
         attendee_id: User.all.sample.id
