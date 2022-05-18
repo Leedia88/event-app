@@ -15,7 +15,8 @@
         <%if event.is_future?%>
             <div class="card m-4 card-container" style="width:320px;">
                 <div class="card-index card-header">
-                    <h4><%=link_to event.title, event_path(event.id), :style => "text-decoration:none;color:#430273;"%></h4>
+                    <h4><%=link_to event.title, event_path(event.id), :style => "text-decoration:none;color:#430273;"%> 
+                    <%if event.is_free?%><span class="badge rounded-pill bg-primary">Gratuit</span><%end%></h4>
                     <p>Organisateur: <%=event.admin.full_name%></p>
                 </div>
                 <div class="card-body align-content-between">
@@ -32,7 +33,11 @@
                     <%if user_signed_in? && is_attending?(event)%>
                         <%=button_to "Se désinscrire", event_attendance_path(event.id, event.get_attendance(current_user).id), method: :delete, :class => " btn btn-outline-danger" %>
                     <%else%>
-                        <%=button_to "S'inscrire", event_attendance_index_path(event.id), :class => " btn btn-info" %>
+                        <%if event.price == 0 %>
+                            <%=button_to "S'inscrire", event_attendance_index_path(event.id), :class => " btn btn-info" %>
+                        <%else%>
+                            <%=link_to "S'inscrire", new_event_charge_path(event.id), :class => " btn btn-info" %>
+                        <%end%>
                     <%end%>
                 </div>
             </div>

@@ -12,13 +12,13 @@ class ChargesController < ApplicationController
 
       begin
   
-      customer = Stripe::Customer.create({
+      @customer = Stripe::Customer.create({
         email: params[:stripeEmail],
         source: params[:stripeToken],
       })
     
       Stripe::Charge.create({
-        customer: customer.id,
+        customer: @customer.id,
         amount: @amount,
         description: 'Rails Stripe customer',
         currency: 'usd',
@@ -30,14 +30,12 @@ class ChargesController < ApplicationController
         redirect_to new_charge_path
       end
 
+      Attendance.create(event: @event, stripe_customer_id: @customer.id, attendee_id: current_user.id)
+    
+      redirect_to event_path(@event.id)
+
     end
 
-    Attendance.create(
-      attendee_id: current_user.id,
-      event: @event,
-      stripe_customer_id: customer.id
-    )
-  
-    redirect_to event_path(@event.id)
+    
 
 end

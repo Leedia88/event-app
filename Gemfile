@@ -43,7 +43,7 @@ gem 'table_print'
 gem 'rails-ujs'
 gem 'stripe'
 
-
+gem 'htmlbeautifier'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

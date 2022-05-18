@@ -38,4 +38,8 @@ class Event < ApplicationRecord
         end
     end
 
+    def is_free?
+        self.price == 0
+    end
+
 end

@@ -29,7 +29,11 @@
                     </ul>
                 </div>
                 <div class="card-footer">
-                <%=link_to "S'inscrire", new_event_charge_path(@event.id), :class => " btn btn-info" %>
+                <%if @event.is_free?%%>
+                    <%=button_to "S'inscrire", event_attendance_index_path(@event.id), :class => " btn btn-info" %>
+                <%else%>
+                    <%=link_to "S'inscrire", new_event_charge_path(@event.id), :class => " btn btn-info" %>
+                <%end%>
                 </div>
     </div>
 </div>
