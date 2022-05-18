@@ -9,30 +9,30 @@
 require 'faker'
 require 'devise'
 
-10.times do
-    User.create!(
-        first_name: Faker::Name.first_name,
-        last_name:  Faker::Name.last_name,
-        email: Faker::Name.first_name.concat(Faker::Number.decimal_part(digits: 2).concat("@yopmail.com")),
-        password: "valena",
-        description: Faker::TvShows::RickAndMorty.quote)
-end
+# 10.times do
+#     User.create!(
+#         first_name: Faker::Name.first_name,
+#         last_name:  Faker::Name.last_name,
+#         email: Faker::Name.first_name.concat(Faker::Number.decimal_part(digits: 2).concat("@yopmail.com")),
+#         password: "valena",
+#         description: Faker::TvShows::RickAndMorty.quote)
+# end
 
-30.times do
-    Event.create!(
-        start_date: Faker::Date.between(from: Date.today, to: 1.year.from_now),
-        duration: rand(5..60)*5,
-        title: Faker::Science.science,
-        description: Faker::TvShows::Buffy.quote,
-        price: rand(1..500),
-        location: Faker::Address.street_address,
-        admin: User.all.sample
-    )
-end
+# 30.times do
+#     Event.create!(
+#         start_date: Faker::Date.between(from: Date.today, to: 1.year.from_now),
+#         duration: rand(5..60)*5,
+#         title: Faker::Science.science,
+#         description: Faker::TvShows::Buffy.quote,
+#         price: rand(1..500),
+#         location: Faker::Address.street_address,
+#         admin: User.all.sample
+#     )
+# end
 
 Event.all.each do
-5.times do
-    Attendance.create!(
+15.times do
+    Attendance.create(
         event_id: Event.all.sample.id,
         attendee_id: User.all.sample.id
     )
