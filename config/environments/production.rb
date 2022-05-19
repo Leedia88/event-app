@@ -28,9 +28,9 @@ if ENV["RAILS_LOG_TO_STDOUT"].present?
   config.logger = ActiveSupport::TaggedLogging.new(logger)
 end
   # Compress JavaScripts and CSS.
-  config.assets.css_compressor = :yui
+  # config.assets.css_compressor = :yui
 
-  # config.assets.js_compressor = :uglifier
+  config.assets.js_compressor = Uglifier.new(harmony: true)
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
