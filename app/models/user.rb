@@ -6,6 +6,9 @@ class User < ApplicationRecord
     has_many :attendances
     has_many :events_attended, through: :attendances, class_name: "Event"
     has_many :events_admin, class_name: "Event"
+    
+    has_one_attached :avatar
+    
     after_create :welcome_send
 
   def welcome_send

@@ -18,8 +18,8 @@ application up and running....
    Then the user will be admin
 * A user receives an email when his profile is created
 * A user receives an email when subscribed for attending an event
+* A user can manage his own events
 
 
 # Features to be implemented
-
-* A user can manage his own events
+* A user can edit his informations and avatar

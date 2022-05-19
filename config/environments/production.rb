@@ -28,7 +28,9 @@ if ENV["RAILS_LOG_TO_STDOUT"].present?
   config.logger = ActiveSupport::TaggedLogging.new(logger)
 end
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  config.assets.css_compressor = :yui
+
+  # config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
@@ -98,4 +100,7 @@ end
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.active_storage.service = :local
+  
 end
