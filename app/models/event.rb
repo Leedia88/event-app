@@ -2,6 +2,7 @@ class Event < ApplicationRecord
     has_many :attendances
     has_many :attendees, through: :attendances, class_name: "User"
     belongs_to :admin, class_name: "User"
+    has_one_attached :avatar
 
     before_update :is_future?
 

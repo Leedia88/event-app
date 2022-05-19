@@ -2,10 +2,13 @@ Rails.application.routes.draw do
  
 
   get 'myprofile', to: "users#show"
+  
   resources :events do
     resources :charges, only: [:new, :create]
     resources :attendance, only: [:create, :destroy]
   end
+
+  resources :avatars, only: [:create]
 
   get 'static_pages/index'
   get 'static_pages/secret'

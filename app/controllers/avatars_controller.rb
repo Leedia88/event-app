@@ -4,4 +4,8 @@ class AvatarsController < ApplicationController
         current_user.avatar.attach(params[:avatar])
         redirect_to(myprofile_path)
     end
+
+    def destroy
+        
+    end
 end

@@ -44,6 +44,8 @@ gem 'table_print'
 gem 'rails-ujs'
 gem 'stripe'
 
+gem "aws-sdk-s3", require: false
+
 gem 'htmlbeautifier'
 
 # Use Capistrano for deployment

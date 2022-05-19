@@ -1,13 +1,13 @@
-<div class="container mt-4">
+<div class="container my-4">
 
 <div class="col-md-6">
 
 <h2>Créé ton événement</h2>
 
-<%= form_tag do %>
-  <%= file_field_tag :avatar %>
-  <%= submit_tag "uploader l'avatar" %>
-<% end %>
+          <%= form_with url:avatars_path do |f| %>
+              <%= f.file_field :avatar %>
+              <%= f.submit "Uploader" %>
+          <% end %>
 
 <%=form_for :event, url: events_path do |f|%>
     <%if @event.errors.any? %>
