@@ -1,5 +1,6 @@
 <div class="row">
-<div class="m-3 text-center"><%= link_to "Nouvel événement", new_admin_event_path, :class =>"btn btn-info"%></div>
+<div class="m-3 text-center"><%= link_to "Nouvel événement", new_admin_event_path, :class =>"btn btn-info"%>
+    <%=link_to "Retour Dashboard", admin_path, :class => "card-link btn btn-light"%></div>
 </div>
 <div class="row">
 <%@events.each do |event|%>
