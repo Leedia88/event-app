@@ -30,12 +30,12 @@ require 'devise'
 #     )
 # end
 
-Event.all.each do
-    2.times do
-        Attendance.create(
-            event_id: Event.all.sample.id,
-            attendee_id: User.all.sample.id
-        )
-    end
+# Event.all.each do
+#     2.times do
+#         Attendance.create(
+#             event_id: Event.all.sample.id,
+#             attendee_id: User.all.sample.id
+#         )
+#     end
 
-end     
+# end     

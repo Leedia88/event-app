@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
  
-
   get 'myprofile', to: "users#show"
+  patch 'myprofile', to: "users#update"
+
+  namespace :admin do
+    get '', to: 'dashboard#index', as: '/'
+  end
   
   resources :events do
     resources :charges, only: [:new, :create]

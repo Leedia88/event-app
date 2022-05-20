@@ -42,7 +42,9 @@ class User < ApplicationRecord
     list
   end
 
-
+  def admin?
+    self.admin
+  end
 
 
 end
