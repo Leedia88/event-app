@@ -43,7 +43,8 @@ gem 'dotenv-rails'
 gem 'table_print'
 gem 'rails-ujs'
 gem 'stripe'
-gem 'activeadmin'
+
+
 
 gem "aws-sdk-s3", require: false
 
