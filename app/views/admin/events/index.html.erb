@@ -1,0 +1,20 @@
+<div class="row">
+<div class="m-3 text-center"><%= link_to "Nouvel événement", new_admin_event_path, :class =>"btn btn-info"%></div>
+</div>
+<div class="row">
+<%@events.each do |event|%>
+    <div class="col">
+        <div class="card m-2" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title"><%=event.title%></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%=event.price%>€</h6>
+        <p class="card-text"><%=event.description%></p>
+        <p class="card-text"><%=event.location%></p>
+        <p class="card-text"><%=event.start_date%></p>
+        <%= link_to "Editer", edit_admin_event_path(event.id), :class =>"card-link"%>
+        <%= link_to "Supprimer", admin_event_path(event.id), :confirm => "Are you sure?", :method => :delete, :class =>"card-link" %>
+        </div>
+        </div>
+    </div>
+    <%end%>
+</div>

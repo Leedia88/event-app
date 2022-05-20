@@ -43,4 +43,13 @@ class Event < ApplicationRecord
         self.price == 0
     end
 
+    def self.pending_list
+        list=[]
+        pending = Event.where(validated: nil)
+        pending.each do |event|
+            list << event
+        end
+        list
+    end
+
 end

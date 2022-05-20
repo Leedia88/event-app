@@ -1,1 +1,42 @@
 <h3>This is the Dashboard!!</h3>
+
+<div class="row">
+    <h3>Evenements en attente de validation</h3>
+    <%@pendings.each do |event|%>
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title"><%=event.title%></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%=event.price%>€</h6>
+        <p class="card-text"><%=event.description%></p>
+        <p class="card-text"><%=event.location%></p>
+        <p class="card-text"><%=event.start_date%></p>
+        <%= link_to("Accepter", admin_accept_path(event), :confirm => "Are you sure?", :method => :post, :class =>"card-link")%>
+        <%= link_to("Refuser", admin_refuse_path(event), :confirm => "Are you sure?", :method => :post, :class =>"card-link")%>
+        </div>
+        </div>
+    </div>
+    <%end%>
+</div>
+
+<div class="row">
+    <div class="col">
+    <h3>Utilisateurs</h3>
+    <%@users.each do |user|%>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title"><%=user.full_name%></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%=user.email%></h6>
+        <p class="card-text"><%=user.description%></p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+    </div>
+    </div>
+    <%end%>
+    </div>
+
+    <div class="col">
+    <h3>Evénements</h3>
+       <%=link_to "Gestion des événements", admin_events_path%> 
+    </div>
+</div>

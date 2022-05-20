@@ -1,0 +1,52 @@
+<div class="container my-4">
+
+<div class="col-md-6">
+
+<h2>Créé un événement</h2>
+
+          <%= form_with url:avatars_path do |f| %>
+              <%= f.file_field :avatar %>
+              <%= f.submit "Uploader" %>
+          <% end %>
+
+<%=form_for :event, url: events_path do |f|%>
+    <%if @event.errors.any? %>
+        <% @event.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger"><%=msg%></div>
+        <%end%>
+    <%end%>
+<p> <br> 
+ <%= f.hidden_field(:admin_id, {:value => current_user.id}) %>
+</p>
+<p>
+<%= f.label :start_date, "Date de début"%> <br> 
+<%= f.datetime_field(:start_date, {:class => 'datepicker'})%>
+</p>
+<p>
+<%= f.label :duration, "Durée (en minutes)"%> <br>
+<%= f.text_field(:duration, {:class => "form-control"})%>
+</p>
+<p>
+<%= f.label :title, "Titre"%> <br>
+<%= f.text_field(:title, {:class => "form-control"})%>
+</p>
+<p>
+<%= f.label :description%> <br>
+<%= f.text_area(:description, {:class => "form-control"})%>
+</p>
+<p>
+<%= f.label :price, "Prix"%> <br>
+<%= f.text_field(:"price", {:class => "form-control"})%>
+</p>
+<p>
+<%= f.label :location, "Adresse"%> <br>
+<%= f.text_field(:location, {:class => "form-control"})%>
+</p>
+
+<p>
+<br><%= f.submit("Créer l'événement", {:class => "card-link btn btn-info"}) %>
+<%=link_to "Annuler", events_path, :class => "card-link btn btn-light"%>
+</p>
+<%end%>
+</div>
+</div>

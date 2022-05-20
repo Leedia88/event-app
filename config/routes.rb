@@ -5,7 +5,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
+    resources :events
+    resources :users
+    match ':id/accept', :to => 'dashboard#accept', :as => 'accept', :via => :post
+    match ':id/refuse', :to => 'dashboard#refuse', :as => 'refuse', :via => :post
   end
+  
   
   resources :events do
     resources :charges, only: [:new, :create]
