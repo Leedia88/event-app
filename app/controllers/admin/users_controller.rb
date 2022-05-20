@@ -1,4 +1,6 @@
-class Admin::UsersController < ApplicationController
+module Admin
+class UsersController < ApplicationController
+    
     before_action :require_admin
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -32,4 +34,5 @@ class Admin::UsersController < ApplicationController
             redirect_to root_path
         end
     end
+end
 end

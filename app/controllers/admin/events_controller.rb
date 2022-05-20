@@ -1,4 +1,5 @@
-class Admin::EventsController < ApplicationController
+module Admin
+    class EventsController < ApplicationController
     before_action :require_admin
     before_action :set_event, only: [:show, :edit, :update, :destroy]
 
@@ -28,5 +29,6 @@ class Admin::EventsController < ApplicationController
         unless current_user.admin?
             redirect_to root_path
         end
+    end
     end
 end
