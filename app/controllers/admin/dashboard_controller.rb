@@ -1,5 +1,4 @@
-module Admin
-    class DashboardController < ApplicationController
+    class Admin::DashboardController < ApplicationController
     before_action :require_admin
 
     def index 
@@ -14,6 +13,7 @@ module Admin
     end
 
     def refuse
+        @event = Event.find(params[:id])
         @event.update_attribute(:validated,false)
         redirect_to admin_path
     end
@@ -24,4 +24,3 @@ module Admin
         end
     end
     end
-end

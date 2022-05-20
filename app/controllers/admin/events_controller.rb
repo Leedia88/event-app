@@ -1,19 +1,18 @@
-module Admin
-    class EventsController < ApplicationController
+    class Admin::EventsController < ApplicationController
     before_action :require_admin
     before_action :set_event, only: [:show, :edit, :update, :destroy]
 
     def index
-        @events = Event.all
+        @validated = Event.where(validated:true)
+        @refused = Event.where(validated:false)
     end
 
     def edit
     end
 
-    def show
-    end
-
     def update
+        @event.update()
+        redirect_to admin_events_path
     end
 
     def destroy
@@ -21,6 +20,8 @@ module Admin
         redirect_to admin_events_path
     end
 
+    private 
+    
     def set_event
         @event = Event.find(params[:id])
     end
@@ -31,4 +32,3 @@ module Admin
         end
     end
     end
-end

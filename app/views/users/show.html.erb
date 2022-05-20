@@ -10,7 +10,27 @@
             <ul class="mt-4">
             <%@events_admin.each do |event|%>
             <li><%=event.title%></li>
-            le <%=event.start_date.to_time.strftime('%e %B')%><br><br>
+            le <%=event.start_date.to_time.strftime('%e %B')%>
+            <%if event.validated %>
+            <span class="tag badge badge-pill m-2" style="color:#198754;"> Validé
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="#198754" class="bi bi-check-all" viewBox="0 0 16 16">
+                <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z"/>
+            </svg>
+            </span>
+            <%elsif !event.validated%>
+            <span class="tag badge badge-pill m-2" style="color:#dc3545;"> Refusé
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" fill="#dc3545" class="bi bi-x-octagon-fill" viewBox="0 0 16 16">
+                <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+            </svg>
+            </span>
+            <%else%>
+            <span class="tag badge badge-pill m-2" style="color:#dc3545;"> En attente de validation
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" fill="#dc3545" class="bi bi-x-octagon-fill" viewBox="0 0 16 16">
+                <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+            </svg>
+            </span>
+            <%end%>
+            <br><br>
             <%=link_to "lien vers l'événement", event_path(event.id), :class => "btn btn-info"%>
             <%=link_to "Modifier l'événement", edit_event_path(event.id), :class => "btn btn-outline-info"%><br><hr>
             <%end%>

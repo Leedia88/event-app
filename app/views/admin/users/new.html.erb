@@ -1,0 +1,45 @@
+<div class="container my-4">
+
+<div class="col-md-6">
+
+<h2>Créer un utilisateur/h2>
+
+          <%= form_with url:avatars_path do |f| %>
+              <%= f.file_field :avatar %>
+              <%= f.submit "Uploader" %>
+          <% end %>
+
+<%=form_for :event, url: events_path do |f|%>
+    <%if @event.errors.any? %>
+        <% @event.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger"><%=msg%></div>
+        <%end%>
+    <%end%>
+
+
+<p>
+<%= f.label :first_name, "Prénom"%> <br>
+<%= f.text_field(:first_name, {:class => "form-control"})%>
+</p>
+
+<p>
+<%= f.label :last_name, "Nom"%> <br>
+<%= f.text_field(:last_name, {:class => "form-control"})%>
+</p>
+
+<p>
+<%= f.label :admin, "Administrateur?"%> <br>
+<%= f.text_field(:admin, {:class => "form-control"})%>
+</p>
+<p>
+<%= f.label :description%> <br>
+<%= f.text_area(:description, {:class => "form-control"})%>
+</p>
+
+<p>
+<br><%= f.submit("Créer l'utilisateur", {:class => "card-link btn btn-info"}) %>
+<%=link_to "Annuler", admin_events_path, :class => "card-link btn btn-light"%>
+</p>
+<%end%>
+</div>
+</div>

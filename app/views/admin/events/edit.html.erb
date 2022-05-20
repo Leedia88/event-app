@@ -29,7 +29,8 @@
         <%end%>
     <%end%>
 <p> <br> 
- <%= f.hidden_field(:admin_id, {:value => current_user.id}) %>
+<%= f.label :admin_id, "Organisateur: "%> <%=@event.admin.full_name%><br>
+ <%= f.text_field(:admin_id) %> 
 </p>
 <p>
 <%= f.label :start_date, "Date de début"%> <br> 

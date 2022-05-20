@@ -1,9 +1,37 @@
+<h3 class="text-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+  <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+  <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+</svg> Evénements</h3>
 <div class="row">
 <div class="m-3 text-center"><%= link_to "Nouvel événement", new_admin_event_path, :class =>"btn btn-info"%>
     <%=link_to "Retour Dashboard", admin_path, :class => "card-link btn btn-light"%></div>
 </div>
 <div class="row">
-<%@events.each do |event|%>
+<h4 class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="30" fill="#198754" class="bi bi-check-all" viewBox="0 0 16 16">
+  <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z"/>
+</svg> Validés</h4>
+<%@validated.each do |event|%>
+    <div class="col">
+        <div class="card m-2" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title"><%=event.title%></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%=event.price%>€</h6>
+        <p class="card-text"><%=event.description%></p>
+        <p class="card-text"><%=event.location%></p>
+        <p class="card-text"><%=event.start_date%></p>
+        <%= link_to "Editer", edit_admin_event_path(event.id), :class =>"card-link"%>
+        <%= link_to "Supprimer", admin_event_path(event.id), :confirm => "Are you sure?", :method => :delete, :class =>"card-link" %>
+        </div>
+        </div>
+    </div>
+    <%end%>
+</div>
+<div class="row">
+<h4 class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="25" fill="#dc3545" class="bi bi-x-octagon-fill" viewBox="0 0 16 16">
+  <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+</svg> Refusés</h4>
+<%@refused.each do |event|%>
     <div class="col">
         <div class="card m-2" style="width: 18rem;">
         <div class="card-body">

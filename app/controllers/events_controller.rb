@@ -1,9 +1,10 @@
 class EventsController < ApplicationController
   before_action :authenticate_user, only: [:new, :create]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :check_validation, only: [:show]
   
   def index
-    @events = Event.all.order(:start_date)
+    @events = Event.where(validated:true).order(:start_date)
   end
 
   def new
@@ -53,6 +54,12 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def check_validation
+    unless @event.validated || current_user.is_admin?(@event)
+        redirect_to events_path
+    end
   end
 
 end
