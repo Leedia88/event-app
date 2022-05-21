@@ -16,18 +16,23 @@
                     <p>Réponses:</p>
                     <ul>
                     <%if @attendees%>
+                        <%=@attendees.count%> Participant.e.s
                             <%@attendees.each do |id|%>
                             <li><%=User.find(id).full_name%></li>
                             <%end%>
                     <%else%>
-                    Pas de Participant
+                        Pas de Participant
                     <%end%>
                     </ul>
                 </div>
                 <div class="card-footer">
-                
-                    <%=button_to "Modier", edit_admin_event_path(@event.id), :class => " btn btn-info" %>
-                    <%=link_to "Retour", admin_events_path, :class => " btn btn-info" %>
+                <%if @event.is_pending?%>
+                     <%= link_to("Accepter", admin_accept_path(@event), :confirm => "Are you sure?", :method => :post, :class =>"card-link")%>
+                    <%= link_to("Refuser", admin_refuse_path(@event), :confirm => "Are you sure?", :method => :post, :class =>"card-link")%>
+                <%end%>
+                <%= link_to "Editer", edit_admin_event_path(@event.id), :class =>"btn btn-outline-primary"%>
+                <%= link_to "Supprimer", admin_event_path(@event.id), :confirm => "Are you sure?", :method => :delete, :class =>"btn btn-outline-danger" %>
+                <%=link_to "Retour", admin_users_path, :class => "btn btn-outline-info"%>
                 </div>
     </div>
 </div>

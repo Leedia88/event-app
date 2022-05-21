@@ -20,8 +20,8 @@ class Admin::UsersController < ApplicationController
         if @user.update(user_params)
             redirect_to admin_users_path
         else
-            puts "raikeje n'ai pas réussi à sauvegarder"
-            render :edit
+            puts "je n'ai pas réussi à sauvegarder"
+            render :edits
         end
     end
 

@@ -6,8 +6,8 @@
 <div class="row">
 <div class="m-3 text-center"><%= link_to "Nouvel événement", new_admin_event_path, :class =>"btn btn-info"%>
     <%=link_to "Retour Dashboard", admin_path, :class => "card-link btn btn-light"%><br><br>
-    <a href="#refused">Les événements refusés</a></div>
-    
+    <a href="#refused">Les événements refusés</a><br>
+    <%= link_to "Les événements en attente de validation", admin_path %></div>
 </div>
 <div class="row">
 <h4 class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="30" fill="#198754" class="bi bi-check-all" viewBox="0 0 16 16">
@@ -37,7 +37,7 @@
     <div class="col">
         <div class="card m-2" style="width: 18rem;">
         <div class="card-body">
-        <h5 class="card-title"><%=event.title%></h5>
+        <h5 class="card-title"><%=link_to event.title, admin_event_path(event)%></h5>
         <h6 class="card-subtitle mb-2 text-muted"><%=event.price%>€</h6>
         <p class="card-text"><%=event.description%></p>
         <p class="card-text"><%=event.location%></p>

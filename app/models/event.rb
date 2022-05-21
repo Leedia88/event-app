@@ -52,4 +52,8 @@ class Event < ApplicationRecord
         list
     end
 
+    def is_pending?
+        validated == nil
+    end
+
 end
