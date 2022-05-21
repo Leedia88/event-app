@@ -9,7 +9,7 @@
               <%= f.submit "Uploader" %>
           <% end %>
 
-<%=form_for :user, url: events_path do |f|%>
+<%=form_for :user, url: users_path do |f|%>
     <%if @user.errors.any? %>
         <% @user.errors.full_messages.each do |msg| %>
         <div class="alert alert-danger"><%=msg%></  div>

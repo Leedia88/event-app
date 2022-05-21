@@ -1,0 +1,31 @@
+<div class="container my-4">
+
+<div class="col-md-6">
+
+<h2>Modifier un utilisateur</h2>
+
+<%=form_for(@user, url: admin_user_path(@user), method: "patch") do |f|%>
+    <%if @user.errors.any? %>
+        <% @user.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger"><%=msg%></div>
+        <%end%>
+    <%end%>
+
+<p><%= f.label :first_name, "Prénom"%> <br>
+<%= f.text_field(:first_name, {:class => "form-control"})%></p>
+<p><%= f.label :last_name, "Nom"%> <br>
+<%= f.text_field(:last_name, {:class => "form-control"})%></p>
+<p> <%= f.label :admin %> ?
+<%= f.check_box(:admin, :selected =>"true") %></p>
+<p><%= f.label :description%> <br>
+<%= f.text_area(:description, {:class => "form-control"})%></p>
+<p><br><%= f.submit("Modifier l'utilisateur", {:class => "card-link"}) %>
+<%=link_to "Annuler", admin_users_path, :class => "card-link btn btn-light"%></p>
+<%end%>
+</div>
+
+<%= form_with url:avatars_path do |f| %>
+              <%= f.file_field :avatar %>
+              <%= f.submit "Uploader" %>
+<% end %>
+</div>

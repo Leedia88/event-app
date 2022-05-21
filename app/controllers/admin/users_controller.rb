@@ -12,9 +12,17 @@ class Admin::UsersController < ApplicationController
     end
 
     def edit
+        puts "je suis dans edit"
     end
 
     def update
+        puts "je suis dans la fonction update"
+        if @user.update(user_params)
+            redirect_to admin_users_path
+        else
+            puts "raikeje n'ai pas réussi à sauvegarder"
+            render :edit
+        end
     end
 
     def destroy
@@ -33,4 +41,9 @@ class Admin::UsersController < ApplicationController
             redirect_to root_path
         end
     end
+
+    def user_params
+        params.require(:user).permit(:first_name, :last_name, :admin, :description)
+    end
+
 end

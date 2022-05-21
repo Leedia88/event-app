@@ -11,7 +11,7 @@
     end
 
     def update
-        @event.update()
+        @event.update(event_params)
         redirect_to admin_events_path
     end
 
@@ -31,4 +31,9 @@
             redirect_to root_path
         end
     end
+
+    def event_params
+        params.require(:event).permit(:title, :description, :validated, :start_date, :location, :price)
+    end
+
     end
